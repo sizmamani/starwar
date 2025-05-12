@@ -36,7 +36,7 @@ Guidelines:
 #### 📄 Pages
 
 - **Dashboard**  
-  A simple grid/list of available Star Wars resource types (people, planets, starships, etc.)
+  A simple grid/list of available Star Wars resource types (characters, planets, starships, etc.)
 
 - **ListingPage**  
   Displays a list of entities from the selected resource category
