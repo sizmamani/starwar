@@ -1,8 +1,15 @@
+import { Dashboard, ResourceList, ResourceDetail } from 'routes';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/:resource" element={<ResourceList />} />
+        <Route path="/:resource/:id" element={<ResourceDetail />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
