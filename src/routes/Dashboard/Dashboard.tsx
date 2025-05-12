@@ -7,7 +7,7 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Loading, NoData, SectionCard } from 'components';
+import { HeroSection, Loading, NoData, SectionCard } from 'components';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchApiRoot } from 'services/api';
@@ -84,6 +84,7 @@ export const Dashboard: React.FC = () => {
 
   return (
     <div className="py-8">
+      <HeroSection />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
         {sections
           .filter((section) => sectionMeta[section])
