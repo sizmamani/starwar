@@ -3,7 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { formatDate, swapiUrlToRoute, getIdFromRoute } from 'utils/textUtils';
 import { fetchResource } from 'services/api';
 import { Loading, ErrorMessage } from 'components';
-import { ApiRootResponse, ResourceType } from 'services/types';
+import { ApiRootResponse, ResourceType, Film } from 'services/types';
+import { useResourceName } from 'context/ResourceNameContext';
 
 export const ResourceDetail: React.FC = () => {
   const { resource, id } = useParams<{
@@ -13,6 +14,7 @@ export const ResourceDetail: React.FC = () => {
   const [data, setData] = useState<ResourceType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const { setResourceName } = useResourceName();
 
   useEffect(() => {
     if (!resource || !id) return;
@@ -22,6 +24,14 @@ export const ResourceDetail: React.FC = () => {
       .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, [resource, id]);
+
+  useEffect(() => {
+    if (data) {
+      const resource = data as { name?: string; title?: string };
+      setResourceName(resource.name || resource.title || id);
+    }
+    return () => setResourceName(undefined);
+  }, [data, id, setResourceName]);
 
   function renderValue(value: string | string[] | number) {
     if (typeof value === 'string' && value.match(/^\d{4}-\d{2}-\d{2}T/)) {

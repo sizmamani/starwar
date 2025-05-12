@@ -3,6 +3,8 @@ import { useTheme } from 'context/ThemeContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { Breadcrumb } from 'components';
+import { useResourceName } from 'context/ResourceNameContext';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -10,6 +12,7 @@ interface MainLayoutProps {
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const { isDarkMode, toggleTheme } = useTheme();
+  const { resourceName } = useResourceName();
 
   return (
     <>
@@ -31,7 +34,10 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         </div>
       </header>
       <main className="min-h-[calc(100vh-80px)] py-8 bg-gray-100 dark:bg-gray-600">
-        <div className="max-w-7xl mx-auto px-4">{children}</div>
+        <div className="max-w-7xl mx-auto px-4">
+          <Breadcrumb resourceName={resourceName} />
+          {children}
+        </div>
       </main>
     </>
   );
