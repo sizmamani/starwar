@@ -94,4 +94,4 @@ See [Running Tests](https://facebook.github.io/create-react-app/docs/running-tes
 Builds the app for production to the `build` folder.  
 Minifies and optimizes for best performance.
 
-rename env.sample to .env 
+### rename `env.sample` to `.env`
