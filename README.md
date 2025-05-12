@@ -46,7 +46,7 @@ Guidelines:
 
 #### 🧩 Components
 
-- **Navbar**  
+- **Breadcrumb**  
   Shared navigation across the app
 
 - **Reusable UI Components**  
