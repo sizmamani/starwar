@@ -2,12 +2,13 @@ import { ErrorMessage, Loading, NoData } from 'components';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchResourceList } from 'services/api';
+import { ApiRootResponse, ResourceType } from 'services/types';
 import { resourceLabels } from 'utils/resourceLabels';
 
 export const ResourceList: React.FC = () => {
-  const { resource } = useParams<{ resource: string }>();
+  const { resource } = useParams<{ resource: keyof ApiRootResponse }>();
   const navigate = useNavigate();
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<ResourceType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -17,7 +18,7 @@ export const ResourceList: React.FC = () => {
   useEffect(() => {
     if (!resource) return;
     setLoading(true);
-    fetchResourceList(resource)
+    fetchResourceList<ResourceType>(resource as keyof ApiRootResponse)
       .then((json) => setData(json.results || []))
       .catch(() => setError(true))
       .finally(() => setLoading(false));
@@ -42,7 +43,7 @@ export const ResourceList: React.FC = () => {
                 className="text-yellow-500 dark:text-yellow-300 underline cursor-pointer bg-transparent border-none p-0"
                 onClick={() => navigate(`/${resource}/${id}`)}
               >
-                {item.name || item.title}
+                {'name' in item ? item.name : item.title}
               </button>
             </li>
           );

@@ -3,23 +3,27 @@ import { useParams, Link } from 'react-router-dom';
 import { formatDate, swapiUrlToRoute, getIdFromRoute } from 'utils/textUtils';
 import { fetchResource } from 'services/api';
 import { Loading, ErrorMessage } from 'components';
+import { ApiRootResponse, ResourceType } from 'services/types';
 
 export const ResourceDetail: React.FC = () => {
-  const { resource, id } = useParams<{ resource: string; id: string }>();
-  const [data, setData] = useState<any>(null);
+  const { resource, id } = useParams<{
+    resource: keyof ApiRootResponse;
+    id: string;
+  }>();
+  const [data, setData] = useState<ResourceType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!resource || !id) return;
     setLoading(true);
-    fetchResource(resource, id)
+    fetchResource<ResourceType>(resource, id)
       .then(setData)
       .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, [resource, id]);
 
-  function renderValue(value: any) {
+  function renderValue(value: string | string[] | number) {
     if (typeof value === 'string' && value.match(/^\d{4}-\d{2}-\d{2}T/)) {
       return formatDate(value);
     }

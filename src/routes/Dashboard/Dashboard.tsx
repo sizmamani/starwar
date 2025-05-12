@@ -11,9 +11,10 @@ import { Loading, NoData, SectionCard } from 'components';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchApiRoot } from 'services/api';
+import { ApiRootResponse } from 'services/types';
 
 const sectionMeta: Record<
-  string,
+  keyof ApiRootResponse,
   { name: string; icon: React.ReactNode; route: string; description: string }
 > = {
   people: {
@@ -56,16 +57,16 @@ const sectionMeta: Record<
 
 export const Dashboard: React.FC = () => {
   const navigate = useNavigate();
-  const [sections, setSections] = useState<string[]>([]);
+  const [sections, setSections] = useState<Array<keyof ApiRootResponse>>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     let isMounted = true;
     setLoading(true);
     fetchApiRoot()
-      .then((data) => {
+      .then((data: ApiRootResponse) => {
         if (!isMounted) return;
-        setSections(Object.keys(data));
+        setSections(Object.keys(data) as Array<keyof ApiRootResponse>);
         setLoading(false);
       })
       .catch(() => {
