@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+# 🌌 Star Wars React App
+
+## 📋 Requirements
+
+Implement a **Star Wars themed React App** using data from:
+
+- [https://swapi.dev/](https://swapi.dev/)
+- or [https://swapi.py4e.com/api](https://swapi.py4e.com/api)
+
+Guidelines:
+
+- Timebox the development to **4–8 hours**
+- Use a **pragmatic design approach** with minimal styling effort
+- Clearly document any assumptions or skipped features due to time constraints
+- Treat this project as a showcase of your **development style**
+- Host code in a **public GitHub repository**
+
+---
+
+## 🚀 MVP Plan
+
+### ⚙️ Tech Stack Decisions
+
+- **Framework:** React + TypeScript
+- **Styling:** Tailwind CSS  
+  → Allows for clean, fast UI building and is **framework-agnostic** (easy to migrate to Vue, Angular, etc.)
+- **Testing:**
+  - Unit Testing: **Jest** (zero-config via Create React App)
+  - E2E Testing (future-ready): **Cypress** or **Playwright**
+- **Environment Config:** API base URL is read from `.env` → enables multi-environment deployment
+
+---
+
+### 🗂️ Project Structure
+
+#### 📄 Pages
+
+- **Dashboard**  
+  A simple grid/list of available Star Wars resource types (people, planets, starships, etc.)
+
+- **ListingPage**  
+  Displays a list of entities from the selected resource category
+
+- **DetailPage**  
+  Shows details about a selected entity
+
+#### 🧩 Components
+
+- **Navbar**  
+  Shared navigation across the app
+
+- **Reusable UI Components**  
+  Cards, Listing, etc., built with reusability in mind
+
+---
+
+### 🛠 Implementation Notes
+
+- The dev API at `https://swapi.dev/` was unreliable during testing  
+  → Using `.env` to store the base URL for flexibility
+- Design is intentionally minimal to meet the time constraint
+- Focus is on **clean architecture**, **reusability**, and **modular components**
+- MVP is scoped for a **4-hour implementation window**; additional features can be added later
+
+---
+
+## ⚠️ Challenges
+
+- Keeping scope small while showing core strengths
+- Ensuring components are decoupled and reusable despite limited time
+
+---
+
+## 🧪 Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### ✅ Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in development mode.  
+Open [http://localhost:3000](http://localhost:3000) to view it.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### `npm test`
 
-### `npm test`
+Launches the test runner in watch mode.  
+See [Running Tests](https://facebook.github.io/create-react-app/docs/running-tests).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### `npm run build`
 
-### `npm run build`
+Builds the app for production to the `build` folder.  
+Minifies and optimizes for best performance.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+See [Deployment Docs](https://facebook.github.io/create-react-app/docs/deployment) for more info.
