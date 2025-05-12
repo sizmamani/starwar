@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faUser,
-  faRocket,
-  faGlobe,
-  faFilm,
   faCar,
   faDragon,
+  faFilm,
+  faGlobe,
+  faRocket,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Loading, NoData, SectionCard } from 'components';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { fetchApiRoot } from 'services/api';
-import { Loading, SectionCard } from 'components';
 
 const sectionMeta: Record<
   string,
@@ -79,7 +79,7 @@ export const Dashboard: React.FC = () => {
   }, []);
 
   if (loading) return <Loading />;
-  if (!sections.length) return null;
+  if (!sections.length) return <NoData />;
 
   return (
     <div className="py-8">
