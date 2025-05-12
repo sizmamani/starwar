@@ -42,7 +42,7 @@ export const ResourceList: React.FC = () => {
                 className="text-yellow-500 dark:text-yellow-300 underline cursor-pointer bg-transparent border-none p-0"
                 onClick={() => navigate(`/${resource}/${id}`)}
               >
-                {item.name}
+                {item.name || item.title}
               </button>
             </li>
           );

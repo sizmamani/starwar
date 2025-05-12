@@ -63,7 +63,7 @@ export const ResourceDetail: React.FC = () => {
 
   return (
     <div className="max-w-xl mt-8 bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-xl p-8">
-      <h2 className="mb-4 text-2xl font-bold text-yellow-500 dark:text-yellow-300 uppercase">
+      <h2 className="mb-4 text-2xl font-bold text-black dark:text-white uppercase">
         {resource?.toUpperCase()} Detail
       </h2>
       <ul className="list-none p-0">
