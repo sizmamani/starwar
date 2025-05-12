@@ -79,7 +79,7 @@ export const ResourceList: React.FC = () => {
   if (!data.length) return <NoData />;
 
   return (
-    <div className="max-w-3xl bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-xl p-8 mt-8">
+    <div className="bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-xl p-8 mt-8">
       <h2 className="mb-4 text-2xl font-bold text-black dark:text-white uppercase">
         {resourceName} List
       </h2>
